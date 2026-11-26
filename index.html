@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHARMAZS | Pharmacy Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= LOGIN PAGE ================= -->
+
+<div id="authPage" class="auth-page">
+
+    <div class="auth-brand">
+        <div class="brand-icon">✚</div>
+        <h1>PHARMAZS</h1>
+        <p>Smart Pharmacy Inventory Management</p>
+    </div>
+
+    <div class="auth-card">
+
+        <!-- LOGIN -->
+
+        <div id="loginForm">
+
+            <h2>Welcome Back!</h2>
+            <p class="subtitle">Login to your pharmacy account.</p>
+
+            <form id="login">
+
+                <label>Email Address</label>
+                <input type="email" id="loginEmail"
+                       placeholder="Enter your email" required>
+
+                <label>Password</label>
+                <input type="password" id="loginPassword"
+                       placeholder="Enter your password" required>
+
+                <button type="submit" class="primary-btn">
+                    LOGIN
+                </button>
+
+            </form>
+
+            <p class="switch-text">
+                Don't have an account?
+                <a href="#" id="goSignup">Sign Up</a>
+            </p>
+
+        </div>
+
+
+        <!-- SIGN UP -->
+
+        <div id="signupForm" class="hidden">
+
+            <h2>Create Account</h2>
+            <p class="subtitle">Register your pharmacy today.</p>
+
+            <form id="register">
+
+                <label>Owner's Full Name</label>
+                <input type="text" id="ownerName"
+                       placeholder="Enter full name" required>
+
+                <label>Pharmacy Name</label>
+                <input type="text" id="pharmacyName"
+                       placeholder="Enter pharmacy name" required>
+
+                <label>Email Address</label>
+                <input type="email" id="registerEmail"
+                       placeholder="Enter email" required>
+
+                <label>Password</label>
+                <input type="password" id="registerPassword"
+                       placeholder="Create password"
+                       minlength="6" required>
+
+                <label>Confirm Password</label>
+                <input type="password" id="confirmPassword"
+                       placeholder="Confirm password" required>
+
+                <button type="submit" class="primary-btn">
+                    CREATE ACCOUNT
+                </button>
+
+            </form>
+
+            <p class="switch-text">
+                Already have an account?
+                <a href="#" id="goLogin">Login</a>
+            </p>
+
+        </div>
+
+    </div>
+
+    <p class="auth-footer">
+        © 2026 PHARMAZS. All Rights Reserved.
+    </p>
+
+</div>
+
+
+<!-- ================= OWNER DASHBOARD ================= -->
+
+<div id="appPage" class="hidden">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <span>✚</span>
+            <h2>PHARMAZS</h2>
+        </div>
+
+        <p class="menu-label">MAIN MENU</p>
+
+        <nav>
+            <a href="#dashboard" class="nav-link active">▦ Dashboard</a>
+            <a href="#inventory" class="nav-link">▤ Medicine Inventory</a>
+            <a href="#forecast" class="nav-link">◈ AI Forecasting</a>
+            <a href="#expiration" class="nav-link">◷ Expiration Alerts</a>
+            <a href="#demand" class="nav-link">⌁ Demand Detection</a>
+            <a href="#sales" class="nav-link">₱ Sales Reports</a>
+            <a href="#suppliers" class="nav-link">♧ Suppliers</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <button id="logoutBtn" class="logout-btn">
+                ↪ Logout
+            </button>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+                <h1>Pharmacy Dashboard</h1>
+                <p>Manage your pharmacy operations in one place.</p>
+            </div>
+
+            <div class="owner-profile">
+                <div class="avatar">👤</div>
+                <div>
+                    <strong id="welcomeName">Owner</strong>
+                    <small>Pharmacy Owner</small>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- DASHBOARD -->
+
+        <section id="dashboard" class="page-section">
+
+            <div class="section-heading">
+                <h2>Overview</h2>
+                <span id="currentDate"></span>
+            </div>
+
+            <div class="stat-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">▤</div>
+                    <p>Total Medicines</p>
+                    <h2 id="totalMedicines">3</h2>
+                    <small>Registered products</small>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon red">!</div>
+                    <p>Low Stock Items</p>
+                    <h2 id="lowStock">1</h2>
+                    <small>Need restocking</small>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">◷</div>
+                    <p>Expiring Soon</p>
+                    <h2 id="expiringCount">2</h2>
+                    <small>Within 30 days</small>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green">₱</div>
+                    <p>Today's Sales</p>
+                    <h2>₱8,450</h2>
+                    <small>Sample sales data</small>
+                </div>
+
+            </div>
+
+            <div class="content-grid">
+
+                <div class="panel">
+                    <h3>Inventory Summary</h3>
+                    <p class="muted">Current medicine inventory status</p>
+
+                    <div class="summary-row">
+                        <span>Available Stock</span>
+                        <strong class="green-text">85%</strong>
+                    </div>
+
+                    <div class="progress">
+                        <div style="width:85%"></div>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Low Stock</span>
+                        <strong class="red-text">10%</strong>
+                    </div>
+
+                    <div class="progress">
+                        <div class="red-progress" style="width:10%"></div>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Critical Stock</span>
+                        <strong class="orange-text">5%</strong>
+                    </div>
+
+                    <div class="progress">
+                        <div class="orange-progress" style="width:5%"></div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h3>Recent Alerts</h3>
+
+                    <div class="alert-item">
+                        <span>⚠</span>
+                        <div>
+                            <strong>Low Medicine Stock</strong>
+                            <p>Paracetamol needs restocking.</p>
+                        </div>
+                    </div>
+
+                    <div class="alert-item">
+                        <span>◷</span>
+                        <div>
+                            <strong>Expiration Warning</strong>
+                            <p>Some medicines are expiring soon.</p>
+                        </div>
+                    </div>
+
+                    <div class="alert-item">
+                        <span>◈</span>
+                        <div>
+                            <strong>AI Demand Prediction</strong>
+                            <p>Check upcoming medicine demand.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MEDICINE INVENTORY -->
+
+        <section id="inventory" class="page-section">
+
+            <div class="section-heading">
+                <h2>Medicine Inventory</h2>
+                <button class="primary-btn small-btn" id="addMedicineBtn">
+                    + Add Medicine
+                </button>
+            </div>
+
+            <div class="panel">
+
+                <input type="text" id="searchMedicine"
+                       class="search-input"
+                       placeholder="Search medicine...">
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Medicine Name</th>
+                                <th>Category</th>
+                                <th>Stock</th>
+                                <th>Price</th>
+                                <th>Expiry Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="medicineTable"></tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- AI FORECAST -->
+
+        <section id="forecast" class="page-section">
+
+            <h2>AI Medicine Demand Forecasting</h2>
+
+            <div class="panel forecast-panel">
+
+                <div class="ai-label">✦ AI-POWERED ANALYSIS</div>
+
+                <h3>Medicine Demand Prediction</h3>
+
+                <p class="muted">
+                    Analyze medicine sales and estimate future demand.
+                </p>
+
+                <label>Select Medicine</label>
+
+                <select id="forecastMedicine">
+                    <option value="Paracetamol 500mg">
+                        Paracetamol 500mg
+                    </option>
+                    <option value="Amoxicillin 500mg">
+                        Amoxicillin 500mg
+                    </option>
+                    <option value="Vitamin C 500mg">
+                        Vitamin C 500mg
+                    </option>
+                </select>
+
+                <button class="primary-btn" id="forecastBtn">
+                    Generate Forecast
+                </button>
+
+                <div id="forecastResult" class="result-box hidden"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- EXPIRATION ALERTS -->
+
+        <section id="expiration" class="page-section">
+
+            <h2>AI Expiration Risk Detection</h2>
+
+            <p class="muted">
+                Monitor medicines that are approaching their expiration dates.
+            </p>
+
+            <div id="expirationList"></div>
+
+        </section>
+
+
+        <!-- UNUSUAL DEMAND -->
+
+        <section id="demand" class="page-section">
+
+            <h2>Unusual Medicine Demand Detection</h2>
+
+            <div class="panel">
+
+                <div class="ai-label">✦ DEMAND MONITORING</div>
+
+                <h3>Demand Analysis</h3>
+
+                <p>
+                    Identify unusual increases in medicine sales
+                    and possible stock shortages.
+                </p>
+
+                <div class="alert-item">
+                    <span>📈</span>
+                    <div>
+                        <strong>Paracetamol 500mg</strong>
+                        <p>Sample alert: demand increased by 28%.</p>
+                    </div>
+                </div>
+
+                <div class="alert-item">
+                    <span>✓</span>
+                    <div>
+                        <strong>Vitamin C 500mg</strong>
+                        <p>No unusual demand detected in this sample.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SALES -->
+
+        <section id="sales" class="page-section">
+
+            <h2>Sales Monitoring</h2>
+
+            <div class="stat-grid">
+
+                <div class="stat-card">
+                    <p>Today's Sales</p>
+                    <h2>₱8,450</h2>
+                </div>
+
+                <div class="stat-card">
+                    <p>Monthly Sales</p>
+                    <h2>₱125,000</h2>
+                </div>
+
+                <div class="stat-card">
+                    <p>Transactions</p>
+                    <h2>85</h2>
+                </div>
+
+            </div>
+
+            <div class="panel">
+                <h3>Sales Report</h3>
+                <p class="muted">
+                    Sample sales figures for demonstration purposes.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- SUPPLIERS -->
+
+        <section id="suppliers" class="page-section">
+
+            <h2>Supplier Management</h2>
+
+            <div class="panel">
+
+                <h3>Supplier Information</h3>
+
+                <p class="muted">
+                    Manage supplier details and medicine orders.
+                </p>
+
+                <div class="supplier-card">
+                    <strong>ABC Medical Supplies</strong>
+                    <p>Contact: 0912-345-6789</p>
+                    <span class="status-active">Active Supplier</span>
+                </div>
+
+                <div class="supplier-card">
+                    <strong>HealthPlus Distributors</strong>
+                    <p>Contact: 0922-456-7890</p>
+                    <span class="status-active">Active Supplier</span>
+                </div>
+
+            </div>
+
+        </section>
+
+        <footer>
+            © 2026 PHARMAZS | Pharmacy Inventory Management System
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- ADD MEDICINE MODAL -->
+
+<div id="medicineModal" class="modal hidden">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h2>Add New Medicine</h2>
+            <button id="closeModal" class="close-btn">×</button>
+        </div>
+
+        <form id="medicineForm">
+
+            <label>Medicine Name</label>
+            <input id="newMedicineName" required>
+
+            <label>Category</label>
+            <input id="newCategory" required>
+
+            <label>Stock Quantity</label>
+            <input id="newStock" type="number" min="0" required>
+
+            <label>Price (₱)</label>
+            <input id="newPrice" type="number" min="0" step="0.01" required>
+
+            <label>Expiration Date</label>
+            <input id="newExpiry" type="date" required>
+
+            <button class="primary-btn" type="submit">
+                Save Medicine
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
